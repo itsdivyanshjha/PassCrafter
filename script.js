@@ -1,5 +1,5 @@
 // Function to generate password
-function generatePassword() {
+async function generatePassword() {
     // Get the password length from the input field
     var passwordLength = document.getElementById('length').value;
     
@@ -16,14 +16,20 @@ function generatePassword() {
         body: raw,
         redirect: 'follow'
     };
-    // Make API call with parameters and use promises to get response
-    fetch("https://nkx0b5is2j.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
-    .then(response => response.json()) // Parse the response as JSON
-    .then(result => {
+    try {
+        // Make API call with parameters and use promises to get response
+        const response = await fetch("https://nkx0b5is2j.execute-api.us-east-1.amazonaws.com/dev", requestOptions);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
         // Display the generated password in the password-output div
         document.getElementById('password-output').innerHTML = result.message;
-    })
-    .catch(error => console.log('error', error));
+    } catch (error) {
+        console.log('error', error);
+        // Display error message in the password-output div
+        document.getElementById('password-output').innerHTML = 'Error: ' + error.message;
+    }
 }
 
 // Attach the generatePassword function to the button's click event
