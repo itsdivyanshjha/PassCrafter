@@ -26,7 +26,7 @@ async function generatePassword() {
         // Display the generated password in the password-output div
         document.getElementById('password-output').innerHTML = result.message;
     } catch (error) {
-        console.log('error', error);
+        console.error('There was a problem with the Fetch operation:', error);
         // Display error message in the password-output div
         document.getElementById('password-output').innerHTML = 'Error: ' + error.message;
     }
