@@ -27,4 +27,4 @@ function generatePassword() {
 }
 
 // Attach the generatePassword function to the button's click event
-document.querySelector('button[type="button"]').addEventListener('click', generatePassword);
+document.getElementById('generate-btn').addEventListener('click', generatePassword);
