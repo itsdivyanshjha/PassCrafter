@@ -18,7 +18,7 @@ async function generatePassword() {
     };
     try {
         // Make API call with parameters and use promises to get response
-        const response = await fetch("https://nkx0b5is2j.execute-api.us-east-1.amazonaws.com/dev", requestOptions);
+        const response = await fetch("https://nkx0b5is2j.execute-api.us-east-1.amazonaws.com/test", requestOptions);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
